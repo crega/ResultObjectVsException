@@ -89,6 +89,81 @@ namespace ResultObjectVsException
                 }
             }
             #endregion
+            #region With Half instances of an error
+            
+            [Benchmark]
+            public void UsingResultObject_WithArgumentErrorsForHalfInstances()
+            {
+                for (int i = 0; i < _numberOfIterations; i++)
+                {
+                    if (i %2 ==0){
+                    var result = NotificationService.PublishMessage_WithResultObject($"username{i}","domain","You won't win lottery because your domain is not valid!");
+                    if (result.IsSuccess)
+                    {
+                        //custom code
+                        // in real use case we could do something with returned "result.Value" value if needed.
+                    }
+                    else
+                    {
+                        //custom code
+                        // in real use case we could do something with information that action failed. Like to stop loop.
+                    }
+                    }
+                    else
+                    {
+                        var result = NotificationService.PublishMessage_WithResultObject($"username{i}","DOMAIN","You won't win lottery because your domain is not valid!");
+                        if (result.IsSuccess)
+                        {
+                            //custom code
+                            // in real use case we could do something with returned "result.Value" value if needed.
+                        }
+                        else
+                        {
+                            //custom code
+                            // in real use case we could do something with information that action failed. Like to stop loop.
+                        }
+                    }
+                }
+            }
+            [Benchmark]
+            public void UsingExceptions_WithArgumentErrorsForHalfInstances()
+            {
+                for (int i = 0; i < _numberOfIterations; i++)
+                {
+                    if (i % 2 == 0)
+                    {
+                        try
+                        {
+                            string returnedValue =
+                                NotificationService.PublishMessage_WithException($"username{i}",
+                                                                                 "domain",
+                                                                                 "You won't win lottery because your domain is not valid!");
+                        }
+                        catch (Exception)
+                        {
+                            // custom code
+                        }
+                    }
+                    else
+                    {
+                        
+                        try
+                        {
+                            string returnedValue =
+                                NotificationService.PublishMessage_WithException($"username{i}",
+                                                                                 "DOMAIN",
+                                                                                 "You won't win lottery because your domain is not valid!");
+                        }
+                        catch (Exception)
+                        {
+                            // custom code
+                        }
+                    }
+                }
+            }
+            
+
+            #endregion
         }
     }
 }
