@@ -13,7 +13,7 @@ You can change number of iterations freely in `Program.cs` on line 18
             private readonly long _numberOfIterations = 1_000_000;
 ```
 
-### To run benchmark position yourself in root of solution and run
+### To run benchmark position yourself in root of solution and run in terminal
 
 ```powershell
 dotnet run --project .\ResultObjectVsException.csproj -c Release
