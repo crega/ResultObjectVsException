@@ -9,8 +9,11 @@
 
   <ItemGroup>
     <Compile Remove="BenchmarkDotNet.Artifacts\**" />
+    <Compile Remove="ResultObjectVsException.Tests\**" />
     <EmbeddedResource Remove="BenchmarkDotNet.Artifacts\**" />
+    <EmbeddedResource Remove="ResultObjectVsException.Tests\**" />
     <None Remove="BenchmarkDotNet.Artifacts\**" />
+    <None Remove="ResultObjectVsException.Tests\**" />
   </ItemGroup>
 
   <ItemGroup>
