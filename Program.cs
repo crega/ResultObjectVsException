@@ -111,7 +111,7 @@ namespace ResultObjectVsException
                     }
                     else
                     {
-                        var result = NotificationService.PublishMessage_WithResultObject($"username{i}","DOMAIN","You won't win lottery because your domain is not valid!");
+                        var result = NotificationService.PublishMessage_WithResultObject($"username{i}","DOMAIN","Message sent successfully");
                         if (result.IsSuccess)
                         {
                             //custom code
